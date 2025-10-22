@@ -70,7 +70,7 @@ class Level(models.Model):
 class Subscriptions(models.Model):
     id_users_for = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True, blank=True, related_name='three', verbose_name='На кого подписались')
     id_users_from = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True, blank=True, related_name='For', verbose_name='Кто подписался')
-    id_level = models.ForeignKey(level, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Уровень')
+    id_level = models.ForeignKey(Level, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Уровень')
     start_date = models.DateField(verbose_name='Дата подписки')
     end_date = models.DateField('Дата отписки', null=True, blank=True)
     auto_renewal = models.BooleanField('Авто продление')
