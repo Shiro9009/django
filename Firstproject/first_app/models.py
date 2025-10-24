@@ -98,6 +98,7 @@ class Streams(models.Model):
     id_users = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Пользователь')
     category = models.CharField('Категрия', choices=cate)
     status = models.CharField('Статус', max_length=20)
+    preview = models.ImageField('Обложка', upload_to='first_app/static/images-maz/', null=True, blank=True)
     start_time = models.TimeField('Время начала стрима')
     end_time = models.TimeField('Время окончания стрима', null=True, blank=True)
     max_viewers = models.IntegerField('макс. кол. зрителей', null=True, blank=True)

@@ -1,4 +1,4 @@
-{% laod static %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,14 +24,14 @@
                 <form class="seacrh-all" action="/search" method="get">  
                     <input class="search-logo" type="text" name="query" placeholder="Поиск">  
                 </form>
-                <a href="#" class="user">
+                <a href="http://127.0.0.1:8000/admin" class="user">
                     <img src="{% static 'images-maz/Group 3.png' %}" alt="user">
                 </a>
             </nav>
         </div>
     </header>
     <main class="main">
-        {% block main %}
+        {% block    main %}
         {% endblock %}
     </main>
     <footer class="footer">
