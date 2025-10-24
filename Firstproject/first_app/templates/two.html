@@ -10,7 +10,7 @@
                     </a>
                 </li>
                 <li class="filter-item">
-                    <a class="link-filter" href="#">
+                    <a class="link-filter" href="http://127.0.0.1:8000/Users">
                         Пользователи
                     </a>
                 </li>
@@ -19,17 +19,11 @@
                         Донаты
                     </a>
                 </li>
-                <li class="filter-item">
-                    <a class="link-filter" href="#">
-                        Уровни
-                    </a>
-                </li>
             </ul>
             <div class="streamers">
-                {% for stream in img %}
                 <div class="streamer">
                     <div class="stream-img">
-                        <img src="{{ stream.preview.url }}" alt="" class="images-stream">
+                        <img src="{% static 'images-maz/image (2).png' %}" alt="" class="images-stream">
                         <h2 class="stream-title">ЛЕХЕНДА СНОВА ВЕРНУЛСЯ</h2>
                         <table class="streamer-table">
                             <thead class="head-table">      
@@ -196,7 +190,6 @@
                         </table>
                     </div>
                 </div>
-                {% endfor %}    
             </div>
         </div>
 

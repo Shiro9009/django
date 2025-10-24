@@ -10,3 +10,9 @@ def page2(requast):
 
 def page3(requast):
     return render(requast, 'three.html')
+
+def page4(requast):
+    return render(requast, 'four.html')
+
+def page5(requast):
+    return render(requast, 'five.html')
