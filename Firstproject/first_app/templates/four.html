@@ -2,75 +2,47 @@
 {% load static %}
 
 {% block main %}
-        <div class="container">
-            <section class="catalog">
-                <ul class="filter-list">
-                    <li class="filter-item">
-                        <a class="link-filter" href="http://127.0.0.1:8000/Stream">
-                            Стримы
-                        </a>
-                    </li>
-                    <li class="filter-item">
-                        <a class="link-filter active" href="http://127.0.0.1:8000/Users">
-                            Пользователи
-                        </a>
-                    </li>
-                    <li class="filter-item">
-                        <a class="link-filter" href="http://127.0.0.1:8000/Donations">
-                            Донаты
-                        </a>
-                    </li>
-                </ul>
-                <ul class="filtrii">
-                    <li class="filtrii-item"><a href="" class="filtrii-link">По дате</a></li>
-                    <li class="filtrii-item"><a href="" class="filtrii-link">По никнейму</a></li>
-                </ul>
-            </section>
-            <section class="users">
-                <div class="useres-list">
-                    <div class="user-item">
-                        {% if ava.avatar %}
-                        <img src="{{ Users.avatar.url }}" alt="avatarka" class="user-avatar">
-                        {% endif %}
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                    <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                    <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                    <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                    <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                    <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                    <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                    <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
-                        <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
-                        <p class="count-subjects">123,431,841</p>
-                    </div>
-                </div>
-            </section>
+<div class="container">
+    <section class="catalog">
+        <ul class="filter-list">
+            <li class="filter-item">
+                <a class="link-filter" href="{% url 'page2' %}">
+                    Стримы
+                </a>
+            </li>
+            <li class="filter-item">
+                <a class="link-filter active" href="{% url 'page4' %}">
+                    Пользователи
+                </a>
+            </li>
+            <li class="filter-item">
+                <a class="link-filter" href="{% url 'page3' %}">
+                    Донаты
+                </a>
+            </li>
+        </ul>
+        <ul class="filtrii">
+            <li class="filtrii-item"><a href="" class="filtrii-link">По дате</a></li>
+            <li class="filtrii-item"><a href="" class="filtrii-link">По никнейму</a></li>
+        </ul>
+    </section>
+    
+    <section class="users">
+        <div class="useres-list">
+            {% for user in users %}
+            <div class="user-item">
+                {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="аватарка" class="user-avatar">
+                {% else %}
+                <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="аватарка" class="user-avatar">
+                {% endif %}
+                <a href="{% url 'page5' %}" class="nivkname-link">
+                    <h3 class="nickname">{{ user.nickname }}</h3>
+                </a>
+                <p class="count-subjects">{{ user.registration_date }}</p>
+            </div>
+            {% endfor %}
         </div>
+    </section>
+</div>
 {% endblock %}

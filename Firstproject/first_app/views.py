@@ -1,19 +1,23 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from .models import *
+from django.utils import timezone
 
-def hello(requast):
-    return render(requast, 'base.html', {'my_test': 'BOLT'})
+def hello(request):
+    current_stream = Streams.objects.filter(status="Транслируется").order_by('-id').first()
+    return render(request, 'base.html', {'current_stream': current_stream})
 
-def page2(requast):
+def page2(request):
     streams = Streams.objects.all()
-    return render(requast, 'two.html',  {'img': streams})
+    return render(request, 'two.html', {'streams': streams})
 
-def page3(requast):
-    return render(requast, 'three.html')
+def page3(request):
+    donations = Donations.objects.all().select_related('id_users_from', 'id_users_to')
+    return render(request, 'three.html', {'donations': donations})
 
-def page4(requast):
-    ava = Users.objects.all()
-    return render(requast, 'four.html',  {'avatar': ava})
+def page4(request):
+    users = Users.objects.all()
+    return render(request, 'four.html', {'users': users})
 
-def page5(requast):
-    return render(requast, 'five.html')
+def page5(request):
+    user = Users.objects.first()
+    return render(request, 'five.html', {'user': user})

@@ -2,53 +2,58 @@
 {% load static %}
 
 {% block main %}
-        <div class="container">
-            <section class="catalog">
-                <ul class="filter-list">
-                    <li class="filter-item">
-                        <a class="link-filter" href="http://127.0.0.1:8000/Stream">
-                            Стримы
-                        </a>
-                    </li>
-                    <li class="filter-item">
-                        <a class="link-filter active" href="http://127.0.0.1:8000/Users">
-                            Пользователи
-                        </a>
-                    </li>
-                    <li class="filter-item">
-                        <a class="link-filter" href="http://127.0.0.1:8000/Donations">
-                            Донаты
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            <section class="informations">
-                <div class="information-user">
-                    <div class="head-information-user">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="" class="images-information-user">
-                        <h3 class="title-information-user">DANGERLYOHA</h3>
+<div class="container">
+    <section class="catalog">
+        <ul class="filter-list">
+            <li class="filter-item">
+                <a class="link-filter" href="{% url 'page2' %}">
+                    Стримы
+                </a>
+            </li>
+            <li class="filter-item">
+                <a class="link-filter active" href="{% url 'page4' %}">
+                    Пользователи
+                </a>
+            </li>
+            <li class="filter-item">
+                <a class="link-filter" href="{% url 'page3' %}">
+                    Донаты
+                </a>
+            </li>
+        </ul>
+    </section>
+    
+    <section class="informations">
+        <div class="information-user">
+            <div class="head-information-user">
+                {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="{{ user.nickname }}" class="images-information-user">
+                {% else %}
+                <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="{{ user.nickname }}" class="images-information-user">
+                {% endif %}
+                <h3 class="title-information-user">{{ user.nickname }}</h3>
+            </div>
+            <div class="main-info">
+                <dl class="abot-user-table">
+                    <div class="abot-uiser-item">
+                        <dt>Имя пользователя:</dt>
+                        <dd>{{ user.user_name }}</dd>
                     </div>
-                    <div class="main-info">
-                        <dl class="abot-user-table">
-                            <div class="abot-uiser-item">
-                                <dt>Имя пользователя:</dt>
-                                <dd>Алексей Шпак</dd>
-                            </div>
-                            <div class="abot-uiser-item">
-                                <dt>Почта:</dt>
-                                <dd>dangerlyoha@gmail.com</dd>
-                            </div>
-                            <div class="abot-uiser-item">
-                                <dt>Дата регистрации:</dt>
-                                <dd>25.10.2025</dd>
-                            </div>
-                            <div class="abot-uiser-item">
-                                <dt>Роль:</dt>
-                                <dd>Админ</dd>
-                            </div>
-                        </dl>
+                    <div class="abot-uiser-item">
+                        <dt>Почта:</dt>
+                        <dd>{{ user.email }}</dd>
                     </div>
-                </div>
-            </section>
+                    <div class="abot-uiser-item">
+                        <dt>Дата регистрации:</dt>
+                        <dd>{{ user.registration_date }}</dd>
+                    </div>
+                    <div class="abot-uiser-item">
+                        <dt>Роль:</dt>
+                        <dd>{{ user.roles }}</dd>
+                    </div>
+                </dl>
+            </div>
         </div>
+    </section>
+</div>
 {% endblock %}

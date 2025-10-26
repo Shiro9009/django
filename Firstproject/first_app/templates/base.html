@@ -2,36 +2,50 @@
 {% load static %}
 
 {% block main %}
-        <div class="container">
-                <ul class="filter-list">
-                    <li class="filter-item">
-                        <a href="http://127.0.0.1:8000/Stream" class="gray">
-                            Стримы
-                        </a>
-                    </li>
-                    <li class="filter-item">
-                        <a href="http://127.0.0.1:8000/Users" class="gray">
-                            Пользователи
-                        </a>
-                    </li>
-                    <li class="filter-item">
-                        <a href="http://127.0.0.1:8000/Donations" class="gray">
-                            Донаты
-                        </a>
-                    </li>
-                </ul>
-            <a href="http://127.0.0.1:8000/Stream">
-                <div class="main-list">
-                    <div class="stream">
-                        <img class="logo" src="{% static 'images-maz/image (2).png' %}" alt="stream">
-                        <h2 class="name">ЛЕЪХЕНДА СНОВА НА ТРОНЕ | !PARI !TG</h2>
-                    </div>
-                    <p class="info">
-                        Пользователь: {} <br>
-                        Категория: {} <br>
-                        ремя начала стрима: {} <br>
-                    </p>
-                </div>
+<div class="container">
+    <ul class="filter-list">
+        <li class="filter-item">
+            <a href="{% url 'page2' %}" class="gray">
+                Стримы
             </a>
+        </li>
+        <li class="filter-item">
+            <a href="{% url 'page4' %}" class="gray">
+                Пользователи
+            </a>
+        </li>
+        <li class="filter-item">
+            <a href="{% url 'page3' %}" class="gray">
+                Донаты
+            </a>
+        </li>
+    </ul>
+    
+    {% if current_stream %}
+    <a href="{% url 'page2' %}">
+        <div class="main-list">
+            <div class="stream">
+                {% if current_stream.preview %}
+                <img class="logo" src="{{ current_stream.preview.url }}" alt="stream">
+                {% else %}
+                <img class="logo" src="{% static 'images-maz/image (2).png' %}" alt="stream">
+                {% endif %}
+                <h2 class="name">{{ current_stream.name }}</h2>
+            </div>
+            <p class="info">
+                Пользователь: {{ current_stream.id_users.nickname|default:"Неизвестно" }} <br>
+                Категория: {{ current_stream.category }} <br>
+                Время начала стрима: {{ current_stream.start_time }} <br>
+                Зрителей: {{ current_stream.max_viewers|default:"0" }}
+            </p>
         </div>
+    </a>
+    {% else %}
+    <div class="no-stream">
+        <h2>Сейчас нет активных стримов</h2>
+        <p>Перейдите на страницу стримов, чтобы посмотреть все доступные трансляции</p>
+        <a href="{% url 'page2' %}" class="btn">Посмотреть все стримы</a>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
