@@ -12,18 +12,18 @@ class Users(models.Model):
     email = models.EmailField("Почта", max_length=100)
     hash_particle = models.CharField('Хэш', max_length=100)
     registration_date = models.DateField("Дата регистрации")
+    avatar = models.ImageField('Автарка', upload_to='users_photos/', null=True, blank=True)
     nickname = models.CharField("Никнейм", max_length=50)
     roles = models.CharField('Роль', max_length=50, choices=rol)
 
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
-        ordering = ["id", "user_name"]
         
 
     
     def __str__(self):
-        return f"{self.id} {self.user_name}"
+        return f"{self.user_name}"
 
 
 
@@ -33,6 +33,7 @@ class Donations(models.Model):
     id_users_from = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True, blank=True, related_name='two', verbose_name='Кто задонатил')
     id_users_to = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True, blank=True, related_name='One', verbose_name='Кому задонатил')
     requisites = models.CharField('Реквизиты', max_length=24)
+    content = models.TextField('Содержание доната', null=True, blank=True)
     date = models.DateField('Дата')
 
     class Meta:
@@ -41,17 +42,17 @@ class Donations(models.Model):
         
 
     def __str__(self):
-        return f"{self.id} {self.amount}"
+        return f"{self.id_users_from} > {self.id_users_to}"
     
 
 
 
 class Level(models.Model):
     lev = [ 
-    ("Starter", "Starter"),
-    ("Junior", "Junior"),
-    ("Middle", "Middle"),
-    ("Senior", "Senior")
+    ("МИНОН", "МИНОН"),
+    ("МИНИМИНОН", "МИНИМОНОН"),
+    ("КУЛИЧ", "КУЛИЧ"),
+    ("МИНЬЁН", "МИНЬЁН")
 ]
 
     level = models.IntegerField(verbose_name='Уровень')
@@ -62,7 +63,7 @@ class Level(models.Model):
         verbose_name_plural = "Уровни подписки"
 
     def __str__(self):
-        return f"{self.id} {self.level}"
+        return f"{self.id} = {self.name}"
     
 
 
@@ -80,7 +81,7 @@ class Subscriptions(models.Model):
         verbose_name_plural = "Подписки"
 
     def __str__(self):
-        return f"{self.id} {self.start_date}"
+        return f"{self.id_users_from} > {self.id_users_for} = {self.start_date}"
 
 
 
@@ -93,11 +94,15 @@ class Streams(models.Model):
     ("MUSIC AND DJS", "MUSIC AND DJS"),
     ("JUST CHATTING", "JUST CHATTING")
 ]
+    status = [
+        ("Транслируется", "Транслируется"),
+        ("Завершился", "Завершился")
+    ]
     
     name = models.CharField('Название стрима', max_length=200)
     id_users = models.ForeignKey(Users, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Пользователь')
     category = models.CharField('Категрия', choices=cate)
-    status = models.CharField('Статус', max_length=20)
+    status = models.CharField('Статус', choices=status)
     preview = models.ImageField('Обложка', upload_to='first_app/static/images-maz/', null=True, blank=True)
     start_time = models.TimeField('Время начала стрима')
     end_time = models.TimeField('Время окончания стрима', null=True, blank=True)
@@ -109,5 +114,5 @@ class Streams(models.Model):
         verbose_name_plural = "Стримы"
 
     def __str__(self):
-        return f"{self.id} {self.name}"
+        return f"{self.name}"
     

@@ -21,11 +21,17 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="filtrii">
+                    <li class="filtrii-item"><a href="" class="filtrii-link">По дате</a></li>
+                    <li class="filtrii-item"><a href="" class="filtrii-link">По никнейму</a></li>
+                </ul>
             </section>
             <section class="users">
                 <div class="useres-list">
                     <div class="user-item">
-                        <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="avatarka" class="user-avatar">
+                        {% if ava.avatar %}
+                        <img src="{{ Users.avatar.url }}" alt="avatarka" class="user-avatar">
+                        {% endif %}
                         <a href="http://127.0.0.1:8000/Info" class="nivkname-link"><h3 class="nickname">DANGERLOYHA</h3></a>
                         <p class="count-subjects">123,431,841</p>
                     </div>

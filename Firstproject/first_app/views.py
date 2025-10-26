@@ -12,7 +12,8 @@ def page3(requast):
     return render(requast, 'three.html')
 
 def page4(requast):
-    return render(requast, 'four.html')
+    ava = Users.objects.all()
+    return render(requast, 'four.html',  {'avatar': ava})
 
 def page5(requast):
     return render(requast, 'five.html')
