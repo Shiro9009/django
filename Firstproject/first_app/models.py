@@ -115,4 +115,7 @@ class Streams(models.Model):
 
     def __str__(self):
         return f"{self.name}"
-    
+
+    @staticmethod
+    def get_current_stream():
+        return Streams.objects.filter(status="Транслируется").order_by('-id').first()

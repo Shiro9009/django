@@ -3,7 +3,7 @@ from .models import *
 from django.utils import timezone
 
 def hello(request):
-    current_stream = Streams.objects.filter(status="Транслируется").order_by('-id').first()
+    current_stream = Streams.get_current_stream()
     return render(request, 'base.html', {'current_stream': current_stream})
 
 def page2(request):

@@ -22,7 +22,7 @@
             </li>
         </ul>
     </section>
-    
+
     <section class="donates">
         {% for donation in donations %}
         <div class="donate">
@@ -33,7 +33,9 @@
             </div>
             <div class="count-content">
                 <p class="content-name">Содержание доната</p>
-                <p class="contant">{{ donation.content|default:"Без сообщения" }}</p>
+                <div class="strr">
+                    <p class="contant">{{ donation.content|default:"Без сообщения" }}</p>
+                </div>
                 <p class="count">сумма: {{ donation.amount }}р</p>
                 <p class="date">дата: {{ donation.date }}</p>
             </div>
