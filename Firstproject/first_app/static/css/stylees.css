@@ -240,7 +240,7 @@ input, .search-logo {
     color: #000;
     background-color: #fff;
     width: 900px;
-    height: 200px;
+    height: 250px;
     padding: 20px;
     border-radius: 23px;
     display: flex;
@@ -337,6 +337,8 @@ input, .search-logo {
 
 .filtrii{
     display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .filtrii-item{

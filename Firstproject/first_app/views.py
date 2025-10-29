@@ -11,7 +11,7 @@ def page2(request):
     return render(request, 'two.html', {'streams': streams})
 
 def page3(request):
-    donations = Donations.objects.all().select_related('id_users_from', 'id_users_to')
+    donations = Donations.objects.all()
     return render(request, 'three.html', {'donations': donations})
 
 def page4(request):
