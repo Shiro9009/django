@@ -208,6 +208,10 @@ input, .search-logo {
 
 .stream-title{
     margin-bottom: 10px;
+    box-sizing: border-box;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .images-stream{
@@ -284,6 +288,9 @@ input, .search-logo {
 
 .title-number-name{
     font-size: 35px;
+    background: linear-gradient(185deg, #9147ff, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .userss{
