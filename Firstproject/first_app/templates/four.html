@@ -22,8 +22,16 @@
             </li>
         </ul>
         <ul class="filtrii">
-            <li class="filtrii-item"><a href="" class="filtrii-link">По дате</a></li>
-            <li class="filtrii-item"><a href="" class="filtrii-link">По никнейму</a></li>
+            <li class="filtrii-item">
+                <a href="?sort=date" class="filtrii-link {% if current_sort == 'date' %}active{% endif %}">
+                    По дате
+                </a>
+            </li>
+            <li class="filtrii-item">
+                <a href="?sort=nickname" class="filtrii-link {% if current_sort == 'nickname' %}active{% endif %}">
+                    По никнейму
+                </a>
+            </li>
         </ul>
     </section>
     
@@ -36,7 +44,7 @@
                 {% else %}
                 <img src="{% static 'images-maz/avatarkf-lyohi.png' %}" alt="аватарка" class="user-avatar">
                 {% endif %}
-                <a href="{% url 'page5' %}" class="nivkname-link">
+                <a href="{% url 'page5' user.id %}" class="nivkname-link">
                     <h3 class="nickname">{{ user.nickname }}</h3>
                 </a>
                 <p class="count-subjects">{{ user.registration_date }}</p>
