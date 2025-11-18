@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import hello, page2, page3, page4, page5, search_users
+from .views import page1, page2, page3, page4, page5, search_users
 
 urlpatterns = [
-    path('', hello, name='hello'),
+    path('', page1, name='hello'),
     path('Stream/', page2, name='page2'),
     path('Donations/', page3, name='page3'),
     path('Users/', page4, name='page4'),

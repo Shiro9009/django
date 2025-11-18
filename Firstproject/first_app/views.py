@@ -4,9 +4,8 @@ from django.db.models.functions import Lower
 from .models import *
 from django.utils import timezone
 
-def hello(request):
+def page1(request):
     current_stream = Streams.get_current_stream()
-    # Добавляем историю поиска для главной страницы
     search_history = request.session.get('search_history', [])
     return render(request, 'base.html', {
         'current_stream': current_stream,
@@ -39,7 +38,6 @@ def page4(request):
     else:
         users = Users.objects.all() 
     
-    # Получаем историю поиска из сессии
     search_history = request.session.get('search_history', [])
     
     return render(request, 'four.html', {
