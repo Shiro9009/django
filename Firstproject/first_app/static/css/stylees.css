@@ -249,7 +249,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-left: 320px;
+
+    justify-content: center;
 }
 
 .donate {
@@ -260,6 +261,7 @@ main {
     padding: 20px;
     border-radius: 23px;
     display: flex;
+    margin: 0 auto;
 }
 
 .number-name {
@@ -467,4 +469,207 @@ main {
     text-align: center;
     color: #6c757d;
     font-size: 14px;
+}
+
+@media (max-width: 1500px) {
+    .streamers {
+        grid-template-columns: repeat(auto-fill, 530px);
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        max-width: 95%;
+        padding: 0 15px;
+    }
+    
+    .search-logo {
+        width: 600px;
+    }
+    
+    .streamers {
+        grid-template-columns: repeat(auto-fill, 500px);
+        justify-content: center;
+    }
+    
+    .donate {
+        width: 700px;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .donates{
+        margin-left: 0px;
+    }
+    
+    .number-name, .count-content {
+        width: 100%;
+    }
+    
+    .left, .right {
+        margin: 0;
+    }
+    
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+@media (max-width: 1050px) {
+    .search-logo {
+        width: 500px;
+        height: 40px;
+    }
+
+    .title {
+        font-size: 40px;
+    }
+
+    .user-ava {
+        width: 60px;
+    }
+
+    .user-images {
+        width: 60px;
+    }
+}
+
+@media (max-width: 850px) {
+    .menu {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .search-logo {
+        width: 100%;
+        max-width: 400px;
+        font-size: 16px;
+    }
+    
+    .title {
+        font-size: 40px;
+    }
+    
+    .filter-list {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .filter-item {
+        margin-right: 20px;
+        font-size: 20px;
+    }
+    
+    .main-list {
+        width: 95%;
+        min-width: unset;
+        padding: 40px 20px;
+    }
+    
+    .streamer {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+    
+    .images-stream {
+        width: 100%;
+        height: auto;
+    }
+    
+    .streamer-table {
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .donates {
+        padding-left: 0;
+        align-items: center;
+    }
+    
+    .donate {
+        width: 95%;
+    }
+    
+    .useres-list {
+        grid-template-columns: repeat(auto-fill, 250px);
+        gap: 20px;
+    }
+    
+    .information-user {
+        width: 95%;
+        height: auto;
+    }
+    
+    .head-information-user {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .abot-uiser-item {
+        font-size: 20px;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .filtrii {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-logo {
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .title {
+        font-size: 32px;
+    }
+    
+    .filter-item {
+        font-size: 16px;
+        margin-right: 10px;
+    }
+    
+    .main-list {
+        padding: 30px 15px;
+    }
+    
+    .info {
+        font-size: 18px;
+    }
+    
+    .user-item {
+        width: 200px;
+    }
+    
+    .user-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .donate {
+        padding: 15px;
+    }
+    
+    .recvizit {
+        font-size: 20px;
+    }
+    
+    .title-number-name {
+        font-size: 28px;
+    }
+    
+    .content-name {
+        font-size: 18px;
+    }
+    
+    .contant {
+        padding: 10px 20px;
+        height: auto;
+    }
 }
